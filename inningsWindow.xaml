@@ -1,0 +1,76 @@
+﻿<Window x:Class="player_profile.inningsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:player_profile"
+        mc:Ignorable="d"
+        Title="inningsWindow" Height="450" Width="800">
+    <Grid x:Name="newBatsmanButton" Margin="-2,0,2,0">
+        <Label Content="Score" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="displayScore" HorizontalAlignment="Left" Margin="23,41,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="displayOverno" HorizontalAlignment="Left" Margin="98,44,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+        <Label Content="CRR" HorizontalAlignment="Left" Margin="454,18,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="displayRR" HorizontalAlignment="Left" Margin="464,49,0,0" TextWrapping="Wrap" Text="0.00" VerticalAlignment="Top"/>
+        <Label Content="Batsmen" HorizontalAlignment="Left" Margin="24,99,0,0" VerticalAlignment="Top"/>
+        <Label Content="R" HorizontalAlignment="Left" Margin="454,99,0,0" VerticalAlignment="Top"/>
+        <Label Content="B" HorizontalAlignment="Left" Margin="497,99,0,0" VerticalAlignment="Top"/>
+        <Label Content="4s" HorizontalAlignment="Left" Margin="535,99,0,0" VerticalAlignment="Top"/>
+        <Label Content="6s" HorizontalAlignment="Left" Margin="578,99,0,0" VerticalAlignment="Top"/>
+        <Label Content="SR" HorizontalAlignment="Left" Margin="616,99,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="strikerName" HorizontalAlignment="Left" Margin="23,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="nonStrikerName" HorizontalAlignment="Left" Margin="23,151,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="452,203,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock x:Name="strikerBall" HorizontalAlignment="Left" Margin="495,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="23" Height="16"/>
+        <TextBlock x:Name="strikerFour" HorizontalAlignment="Left" Margin="538,133,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock x:Name="strikerSix" HorizontalAlignment="Left" Margin="578,133,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock x:Name="strikerStrikeRate" HorizontalAlignment="Left" Margin="621,133,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="21" Height="16"/>
+        <TextBlock x:Name="nonStrikerRun" HorizontalAlignment="Left" Margin="452,154,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="21" Height="16"/>
+        <TextBlock x:Name="nonStrikerBall" HorizontalAlignment="Left" Margin="495,154,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="23" Height="16"/>
+        <TextBlock x:Name="nonStrikerFour" HorizontalAlignment="Left" Margin="538,154,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock x:Name="nonStrikerSix" HorizontalAlignment="Left" Margin="581,154,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock x:Name="nonStrikerStrikeRate" HorizontalAlignment="Left" Margin="621,157,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="21" Height="16"/>
+        <Label Content="Bowler" HorizontalAlignment="Left" Margin="24,177,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="bowlerName" HorizontalAlignment="Left" Margin="23,203,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="strikerRun" HorizontalAlignment="Left" Margin="452,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="21" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="495,203,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="535,206,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock x:Name="bowlerWicket" HorizontalAlignment="Left" Margin="578,206,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="621,209,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <Label Content="This Over" HorizontalAlignment="Left" Margin="24,224,0,0" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FFC4EC94" HorizontalAlignment="Left" Height="72" Margin="324,276,0,0" Stroke="Black" VerticalAlignment="Top" Width="458"/>
+        <Label Content="o" HorizontalAlignment="Left" Margin="454,172,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <Label Content="m" HorizontalAlignment="Left" Margin="497,172,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <Label Content="r" HorizontalAlignment="Left" Margin="537,172,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <Label Content="w" HorizontalAlignment="Left" Margin="581,175,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <Label Content="er" HorizontalAlignment="Left" Margin="621,175,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <Rectangle Fill="#FF65CD2A" HorizontalAlignment="Left" Height="150" Margin="24,251,0,0" Stroke="Black" VerticalAlignment="Top" Width="128"/>
+        <CheckBox x:Name="wide" Content="Wide" HorizontalAlignment="Left" Margin="37,264,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="noBall" Content="No Ball" HorizontalAlignment="Left" Margin="37,284,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="byes" Content="Byes" HorizontalAlignment="Left" Margin="36,304,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="legByes" Content="Leg Byes" HorizontalAlignment="Left" Margin="36,324,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="wicket" Content="Wicket" HorizontalAlignment="Left" Margin="36,343,0,0" VerticalAlignment="Top" Checked="wicket_Checked"/>
+        <TextBlock x:Name="displayBallno" HorizontalAlignment="Left" Margin="109,44,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="displayOver_Copy1" HorizontalAlignment="Left" Margin="106,41,0,0" TextWrapping="Wrap" Text="." VerticalAlignment="Top"/>
+        <Button x:Name="zero" Content="0" HorizontalAlignment="Left" Margin="350,295,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button x:Name="one" Content="1" HorizontalAlignment="Left" Margin="452,295,0,0" VerticalAlignment="Top" Width="75" Click="one_Click"/>
+        <Button x:Name="two" Content="2" HorizontalAlignment="Left" Margin="553,295,0,0" VerticalAlignment="Top" Width="75" Click="two_Click"/>
+        <Button x:Name="three" Content="3" HorizontalAlignment="Left" Margin="650,295,0,0" VerticalAlignment="Top" Width="75" Click="three_Click"/>
+        <Button x:Name="four" Content="4" HorizontalAlignment="Left" Margin="350,321,0,0" VerticalAlignment="Top" Width="75" Click="four_Click"/>
+        <Button x:Name="five" Content="5" HorizontalAlignment="Left" Margin="454,321,0,0" VerticalAlignment="Top" Width="75" Click="five_Click"/>
+        <Button x:Name="six" Content="6" HorizontalAlignment="Left" Margin="553,321,0,0" VerticalAlignment="Top" Width="75" Click="six_Click"/>
+        <Label Content="Overs" HorizontalAlignment="Left" Margin="83,10,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="displayWicket" HorizontalAlignment="Left" Margin="42,41,0,0" TextWrapping="Wrap" Text="0 " VerticalAlignment="Top"/>
+        <TextBlock x:Name="displayScore_Copy" HorizontalAlignment="Left" Margin="34,41,0,0" TextWrapping="Wrap" Text="/" VerticalAlignment="Top"/>
+        <Label Content="Enter New Batsman Name" HorizontalAlignment="Left" Margin="325,355,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="newBatsmanName" HorizontalAlignment="Left" Height="23" Margin="340,381,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Continue" HorizontalAlignment="Left" Margin="465,381,0,0" VerticalAlignment="Top" Width="49" Height="23" Click="Button_Click_1"/>
+        <CheckBox x:Name="runOutStriker" Content="runout striker" HorizontalAlignment="Left" Margin="37,363,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="runOutNonStriker" Content="runout non-striker" HorizontalAlignment="Left" Margin="36,383,0,0" VerticalAlignment="Top"/>
+        <Label Content="Enter Next Bowler" HorizontalAlignment="Left" Margin="553,357,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="newBowler" HorizontalAlignment="Left" Height="23" Margin="563,381,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Continue" HorizontalAlignment="Left" Margin="698,384,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
+        <Button x:Name="swapBatsman" Content="SwapBatsman" HorizontalAlignment="Left" Margin="650,321,0,0" VerticalAlignment="Top" Width="75" Click="swapBatsman_Click"/>
+
+    </Grid>
+</Window>

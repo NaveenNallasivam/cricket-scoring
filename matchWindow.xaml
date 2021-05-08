@@ -1,0 +1,19 @@
+﻿<Window x:Class="player_profile.matchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:player_profile"
+        mc:Ignorable="d"
+        Title="matchWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="On Strike" HorizontalAlignment="Left" Margin="38,41,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <TextBox x:Name="strikerName" HorizontalAlignment="Left" Height="23" Margin="38,72,0,0" TextWrapping="Wrap" Text="Batsman Name" VerticalAlignment="Top" Width="120" Background="#FF918B8B"/>
+        <Label Content="Non-Striker" HorizontalAlignment="Left" Margin="38,100,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <TextBox x:Name="nonStrikerName" HorizontalAlignment="Left" Height="23" Margin="38,131,0,0" TextWrapping="Wrap" Text="Non-Striker Name&#xD;&#xA;" VerticalAlignment="Top" Width="120" Background="#FF938080"/>
+        <Label Content="Bowler" HorizontalAlignment="Left" Margin="38,174,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <Button Content="Start Innings" HorizontalAlignment="Left" Margin="668,340,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
+        <TextBox x:Name="bowlerName" HorizontalAlignment="Left" Height="23" Margin="38,200,0,0" TextWrapping="Wrap" Text="Bowler Name" VerticalAlignment="Top" Width="120" Background="#FFCFBFBF"/>
+
+    </Grid>
+</Window>
