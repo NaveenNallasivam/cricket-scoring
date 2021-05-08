@@ -174,9 +174,20 @@ namespace player_profile
             this.bowler = newBowler.Text;
             bowlerName.Text = newBowler.Text;
             next[count++] = new playerProfile();
+            MessageBox.Show(newBowler.Text);
             next[count - 1].Name = newBowler.Text;
+            batsman.Remove(batsman[2]);
             batsman.Add(next[count - 1]);
-            bowlerWicket.Text = Convert.ToString(batsman[3].Wickets);
+            if (String.Equals(batsman[2].Name, this.bowler) == false)
+            {
+                playerProfile temps = batsman[2];
+                batsman[2] = batsman[1];
+                batsman[1] = temps;
+                MessageBox.Show(batsman[2].Name);
+                MessageBox.Show(batsman[1].Name);
+                MessageBox.Show(batsman[0].Name);
+            }
+            bowlerWicket.Text = Convert.ToString(batsman[2].Wickets);
         }
         //this functions adds wicket to the bowler's profile
         public void addWicket()
@@ -741,5 +752,7 @@ namespace player_profile
             changeStriker();
             MessageBox.Show("Batsman swapped " + this.striker + " on strike");
         }
+
+      
     }
 }
