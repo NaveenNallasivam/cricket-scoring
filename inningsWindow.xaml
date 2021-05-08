@@ -20,30 +20,30 @@
         <Label Content="SR" HorizontalAlignment="Left" Margin="616,99,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="strikerName" HorizontalAlignment="Left" Margin="23,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
         <TextBlock x:Name="nonStrikerName" HorizontalAlignment="Left" Margin="23,151,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="452,203,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
-        <TextBlock x:Name="strikerBall" HorizontalAlignment="Left" Margin="495,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="23" Height="16"/>
-        <TextBlock x:Name="strikerFour" HorizontalAlignment="Left" Margin="538,133,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
-        <TextBlock x:Name="strikerSix" HorizontalAlignment="Left" Margin="578,133,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
-        <TextBlock x:Name="strikerStrikeRate" HorizontalAlignment="Left" Margin="621,133,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="21" Height="16"/>
-        <TextBlock x:Name="nonStrikerRun" HorizontalAlignment="Left" Margin="452,154,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="21" Height="16"/>
-        <TextBlock x:Name="nonStrikerBall" HorizontalAlignment="Left" Margin="495,154,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="23" Height="16"/>
-        <TextBlock x:Name="nonStrikerFour" HorizontalAlignment="Left" Margin="538,154,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
-        <TextBlock x:Name="nonStrikerSix" HorizontalAlignment="Left" Margin="581,154,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
-        <TextBlock x:Name="nonStrikerStrikeRate" HorizontalAlignment="Left" Margin="621,157,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="21" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="452,203,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock x:Name="strikerBall" HorizontalAlignment="Left" Margin="495,130,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="23" Height="16"/>
+        <TextBlock x:Name="strikerFour" HorizontalAlignment="Left" Margin="538,133,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock x:Name="strikerSix" HorizontalAlignment="Left" Margin="578,133,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock x:Name="strikerStrikeRate" HorizontalAlignment="Left" Margin="621,133,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="21" Height="16"/>
+        <TextBlock x:Name="nonStrikerRun" HorizontalAlignment="Left" Margin="452,154,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="21" Height="16"/>
+        <TextBlock x:Name="nonStrikerBall" HorizontalAlignment="Left" Margin="495,154,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="23" Height="16"/>
+        <TextBlock x:Name="nonStrikerFour" HorizontalAlignment="Left" Margin="538,154,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock x:Name="nonStrikerSix" HorizontalAlignment="Left" Margin="581,154,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock x:Name="nonStrikerStrikeRate" HorizontalAlignment="Left" Margin="621,157,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="21" Height="16"/>
         <Label Content="Bowler" HorizontalAlignment="Left" Margin="24,177,0,0" VerticalAlignment="Top"/>
         <TextBlock x:Name="bowlerName" HorizontalAlignment="Left" Margin="23,203,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock x:Name="strikerRun" HorizontalAlignment="Left" Margin="452,130,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="21" Height="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="495,203,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="535,206,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
-        <TextBlock x:Name="bowlerWicket" HorizontalAlignment="Left" Margin="578,206,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="621,209,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock x:Name="strikerRun" HorizontalAlignment="Left" Margin="452,130,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="21" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="495,203,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="535,206,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock x:Name="bowlerWicket" HorizontalAlignment="Left" Margin="578,206,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="618,203,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" RenderTransformOrigin="0.265,0.156" Width="19" Height="16"/>
         <Label Content="This Over" HorizontalAlignment="Left" Margin="24,224,0,0" VerticalAlignment="Top"/>
         <Rectangle Fill="#FFC4EC94" HorizontalAlignment="Left" Height="72" Margin="324,276,0,0" Stroke="Black" VerticalAlignment="Top" Width="458"/>
-        <Label Content="o" HorizontalAlignment="Left" Margin="454,172,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
-        <Label Content="m" HorizontalAlignment="Left" Margin="497,172,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
-        <Label Content="r" HorizontalAlignment="Left" Margin="537,172,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
-        <Label Content="w" HorizontalAlignment="Left" Margin="581,175,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
-        <Label Content="er" HorizontalAlignment="Left" Margin="621,175,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <Label Content="o" HorizontalAlignment="Left" Margin="452,172,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" RenderTransformOrigin="-0.471,0.654"/>
+        <Label Content="m" HorizontalAlignment="Left" Margin="493,177,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <Label Content="r" HorizontalAlignment="Left" Margin="535,178,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <Label Content="w" HorizontalAlignment="Left" Margin="578,180,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
+        <Label Content="er" HorizontalAlignment="Left" Margin="616,175,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold"/>
         <Rectangle Fill="#FF65CD2A" HorizontalAlignment="Left" Height="150" Margin="24,251,0,0" Stroke="Black" VerticalAlignment="Top" Width="128"/>
         <CheckBox x:Name="wide" Content="Wide" HorizontalAlignment="Left" Margin="37,264,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="noBall" Content="No Ball" HorizontalAlignment="Left" Margin="37,284,0,0" VerticalAlignment="Top"/>
@@ -71,6 +71,9 @@
         <TextBox x:Name="newBowler" HorizontalAlignment="Left" Height="23" Margin="563,381,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Button Content="Continue" HorizontalAlignment="Left" Margin="698,384,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
         <Button x:Name="swapBatsman" Content="SwapBatsman" HorizontalAlignment="Left" Margin="650,321,0,0" VerticalAlignment="Top" Width="75" Click="swapBatsman_Click"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="137" Margin="4,87,0,0" VerticalAlignment="Top" Width="788"/>
+        <Rectangle Fill="#FF6FB265" HorizontalAlignment="Left" Height="79" Margin="15,98,0,0" Stroke="Black" VerticalAlignment="Top" Width="652" Opacity="0.5"/>
+        <Rectangle Fill="#FF6FB265" HorizontalAlignment="Left" Height="37" Stroke="Black" VerticalAlignment="Top" Width="652" Margin="15,182,0,0" Opacity="0.5"/>
 
     </Grid>
 </Window>
