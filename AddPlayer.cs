@@ -10,11 +10,16 @@ namespace player_profile
     public class playerProfile
     {
         string name;
-        double runs;
+        int runs;
+        int ballsFaced;
         double strikeRate;
         int wickets;
         int catches;
         int stumpings;
+        int runsGiven;
+        int maiden;
+        double economy;
+        int oversBowled;
         double battingAverage;
         double bowlingAverage;
         public playerProfile() { }
@@ -24,9 +29,13 @@ namespace player_profile
             set { name = value; }
         }
         
+        public int BallsFaced
+        {
+            get { return ballsFaced; }
+            set { ballsFaced = value; }
+        }
         
-        
-        public double Runs
+        public int Runs
         {
             get { return runs; }
             set { runs = value; }
@@ -46,10 +55,30 @@ namespace player_profile
             get { return stumpings; }
             set { stumpings = value; }
         }
+        public int OversBowled
+        {
+            get { return oversBowled; }
+            set { oversBowled = value; }
+        }
         public double StrikeRate
         {
             get { return strikeRate;}
             set { strikeRate = value; }
+        }
+        public int RunsGiven
+        {
+            get { return runsGiven; }
+            set { runsGiven = value; }
+        }
+        public int Maiden
+        {
+            get { return maiden; }
+            set { maiden = value; }
+        }
+        public double Economy
+        {
+            get { return economy; }
+            set { economy = value; }
         }
     }
 }

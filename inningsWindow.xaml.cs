@@ -18,7 +18,6 @@ namespace player_profile
     /// The file inningsWindow.xaml is the backend for the 3rd window displayed
     /// </summary>
     /// bugs to be fixed
-    /// run out cannot be added. create this feature
     public partial class inningsWindow : Window
     {
         string striker;
@@ -33,18 +32,22 @@ namespace player_profile
         int nFour = 0;
         int sSix = 0;
         int nSix = 0;
-        int fours = 0;
-        int sixs = 0;
         int lvwicket = 0;
         double strikeRate = 0;
         int ballCount = 0;
         double over;
+        int checkMaiden;
         int totalOver;
+        double economy;
         matchWindow nxtinnings = new matchWindow(String.Empty);
         playerProfile[] next = new playerProfile[100];
         int count = 0;
-        //the following list contains the objects of playerProfile class passed as reference from matchWindow.xaml.cs//
+        /*the following list contains the objects of playerProfile class passed as reference from matchWindow.xaml.cs
+         * The batsman contains striker, non-striker, bowler objects
+         * The contents are arranged as: [1]striker [2]non-striker [3]bowler
+         * this order has to be maintained*/
         List<playerProfile> batsman = new List<playerProfile>();
+        List<playerProfile>usedBowler=new List<playerProfile>();//List containing objects of used bowlers
         public inningsWindow(string striker, string nonstriker, string bowler, List<playerProfile> player,int over) 
         {
             InitializeComponent();
@@ -52,6 +55,7 @@ namespace player_profile
             this.nonstriker = nonstriker;
             this.bowler = bowler;
             batsman.AddRange(player);
+            usedBowler.Add(batsman[2]);
             this.totalOver = over;
             strikerName.Text = this.striker;
             nonStrikerName.Text = this.nonstriker;
@@ -61,13 +65,10 @@ namespace player_profile
         public void checkInnings(int ballCount)
         {
             if (ballCount == 6)
-            {
-                
+            {    
                 this.over = this.over + 1;
                 this.ballCount = 0;
                 changeStriker();//change in strike batsman after over is finished.
-                                //change.Show();
-                                //this.Close();
                 if (this.over >= this.totalOver)
                 {
                     nxtinnings=new matchWindow("start next innings");
@@ -81,15 +82,15 @@ namespace player_profile
             }
         }
         //this function claculates the strikerate of the batsman
-        public void calculateStrikeRate(int score,double over,int ballsfaced,string striker)
+        public void calculateStrikeRate(int score, double over, int ballsfaced, string striker)
         {
             double balls = (over * 6) + ballsfaced;
             this.strikeRate = (score / balls) * 100;
             foreach (playerProfile p in batsman)
             {
-              
+
                 //checks for the striker
-                if ((string.Equals(p.Name,striker) == true))
+                if ((string.Equals(p.Name, striker) == true))
                 {
                     p.StrikeRate = this.strikeRate;//updates the striker's strike rate
                     strikerStrikeRate.Text = Convert.ToString(p.StrikeRate);//updates the striker strike rate textblock
@@ -103,6 +104,7 @@ namespace player_profile
                     break;
                 }
             }
+
         }
         //this function calculates the runrate of the innings
         public void calculateRunRate(int score, double over, int ballsfaced)
@@ -113,8 +115,9 @@ namespace player_profile
             displayRR.Text=Convert.ToString(runrate);
         }
         //this function updates individual runs and balls faced by the batsman
-        public void updateBallAndRun(int runs,int balls)
+        public void updateBallAndRun(int runs, int balls)
         {
+
             //loop for updating runs
             foreach (playerProfile p in batsman)
             {
@@ -133,6 +136,7 @@ namespace player_profile
                     nonStrikerRun.Text = Convert.ToString(p.Runs);
                     break;
                 }
+
             }
             //loop for updating balls
             foreach (playerProfile p in batsman)
@@ -141,53 +145,79 @@ namespace player_profile
                 if ((string.Equals(p.Name, striker) == true))
                 {
                     this.strikerballsFaced = this.strikerballsFaced + balls;
-                    strikerBall.Text = Convert.ToString(this.strikerballsFaced);
+                    p.BallsFaced = this.strikerballsFaced;
+                    strikerBall.Text = Convert.ToString(p.BallsFaced);
                     break;
                 }
                 //checks for non striker and updates balls
                 if (string.Equals(p.Name, this.nonstriker))
                 {
                     this.nonStrikerballsFaced = this.nonStrikerballsFaced + balls;
-                    nonStrikerBall.Text = Convert.ToString(this.nonStrikerballsFaced);
+                    p.BallsFaced=this.nonStrikerballsFaced;
+                    nonStrikerBall.Text = Convert.ToString(p.BallsFaced);
                     break;
                 }
             }
-
         }
         //this functions changes striker 
         public void changeStriker()
         {
-           
-            string temp = this.striker;
-            this.striker = this.nonstriker;
-            this.nonstriker = temp;
-            if (String.Equals(batsman[2].Name, this.bowler) == false)
-            {
-                playerProfile temps = batsman[2];
-                batsman[2] = batsman[1];
-                batsman[1] = temps;
+                string temp = this.striker;
+                this.striker = this.nonstriker;
+                this.nonstriker = temp;
+                if (String.Equals(batsman[2].Name, this.bowler) == false)
+                {
+                    playerProfile temps = batsman[2];
+                    batsman[2] = batsman[1];
+                    batsman[1] = temps;
+                }
+
             }
-         
-        }
-        public void changeBowler()
+            public void changeBowler()
         {
+            int check = checkMaiden - batsman[2].RunsGiven;
+            if (check== 0){
+                batsman[2].Maiden = batsman[2].Maiden + 1;
+                bowlerMaiden.Text = Convert.ToString(batsman[2].Maiden);
+            }
+            int flag = 0;
+            batsman[2].OversBowled = batsman[2].OversBowled + 1;
             this.bowler = newBowler.Text;
             bowlerName.Text = newBowler.Text;
-            next[count++] = new playerProfile();
-            MessageBox.Show(newBowler.Text);
-            next[count - 1].Name = newBowler.Text;
-            batsman.Remove(batsman[2]);
-            batsman.Add(next[count - 1]);
+            //this loop checks whether the bowler is already used
+            foreach(playerProfile p in usedBowler)
+            {
+                if (String.Equals(this.bowler, p.Name)==true)
+                {
+                    flag = 1;
+                    batsman.Remove(batsman[2]);
+                    batsman.Add(p);
+                   
+                }
+            }
+            //if the bowler is not used previously adds his object to batsman list
+            if (flag == 0)
+            {
+                next[count++] = new playerProfile();
+                MessageBox.Show(newBowler.Text+" comes into attack");
+                next[count - 1].Name = newBowler.Text;
+                batsman.Remove(batsman[2]);
+                batsman.Add(next[count - 1]);
+                usedBowler.Add(batsman[2]);
+            }
+            //Suppose the content in batsman list is unordered
             if (String.Equals(batsman[2].Name, this.bowler) == false)
             {
                 playerProfile temps = batsman[2];
                 batsman[2] = batsman[1];
                 batsman[1] = temps;
-                MessageBox.Show(batsman[2].Name);
-                MessageBox.Show(batsman[1].Name);
-                MessageBox.Show(batsman[0].Name);
             }
             bowlerWicket.Text = Convert.ToString(batsman[2].Wickets);
+            bowlerRuns.Text = Convert.ToString(batsman[2].RunsGiven);
+            bowlerMaiden.Text = Convert.ToString(batsman[2].Maiden);
+            bowlerEconomy.Text = Convert.ToString(batsman[2].Economy);
+            bowlerOvers.Text = Convert.ToString(batsman[2].OversBowled);
+            checkMaiden = batsman[2].RunsGiven; //compares RunsGiven with checkMaiden at the end of the over
         }
         //this functions adds wicket to the bowler's profile
         public void addWicket()
@@ -198,12 +228,6 @@ namespace player_profile
                     bowlerName.Text = bowler;
                     bowlerWicket.Text = Convert.ToString(batsman[2].Wickets);
                 }
-            else
-            {
-                MessageBox.Show("error");
-                MessageBox.Show(batsman[2].Name);
-                MessageBox.Show(this.bowler);
-            }
             
         }
         public void addBoundary(int boundary)
@@ -260,6 +284,7 @@ namespace player_profile
                     batsman.Remove(batsman[0]);
                     batsman.Add(next[count - 1]);
                     batsman.Reverse();
+                //ensures the contents of batsman list is in correct order
                 if (String.Equals(batsman[2].Name, this.bowler) == false)
                 {
                     playerProfile temp = batsman[2];
@@ -302,6 +327,30 @@ namespace player_profile
                
                 }
         }
+        public void addBowlerRuns(int runs)
+        {
+          
+            foreach(playerProfile p in batsman)
+            {
+                if (String.Equals(p.Name, this.bowler) == true)
+                {
+                    p.RunsGiven = p.RunsGiven + runs;
+                    bowlerRuns.Text = Convert.ToString(p.RunsGiven);
+                }
+            }
+            if (batsman[2].OversBowled != 0)
+            {
+                economy = batsman[2].RunsGiven / batsman[2].OversBowled;
+                batsman[2].Economy = economy;
+                bowlerEconomy.Text = Convert.ToString(batsman[2].Economy);
+            }
+            else
+            {
+                economy = batsman[2].RunsGiven;
+                batsman[2].Economy = economy;
+                bowlerEconomy.Text = Convert.ToString(batsman[2].Economy);
+            }
+        }
         //The following functions defines score button clicks(0,1,2,3,4,5,6)//
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -324,7 +373,8 @@ namespace player_profile
                 displayWicket.Text = Convert.ToString(lvwicket);
                 updateBallAndRun(0,0);
                 calculateRunRate(score,over,ballCount);
-                calculateStrikeRate(score,over,ballCount,this.striker);
+                calculateStrikeRate(score, over, ballCount, this.striker);
+                addBowlerRuns(1);
                 checkInnings(ballCount);
                 legByes.IsChecked = false;
                 byes.IsChecked = false;
@@ -341,8 +391,8 @@ namespace player_profile
                 updateBallAndRun(0,1);
                 checkInnings(ballCount);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-              
+                calculateStrikeRate(score, over, ballCount, this.striker);
+
             }
 
         }
@@ -365,7 +415,8 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
+                calculateStrikeRate(score, over, ballCount, this.striker);
+                addBowlerRuns(1);
                 if (wide.IsChecked == true)
                 {
                     updateBallAndRun(0, 0);
@@ -390,7 +441,7 @@ namespace player_profile
                 displayWicket.Text = Convert.ToString(lvwicket);
                 updateBallAndRun(0,1);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
+                calculateStrikeRate(score, over, ballCount, this.striker);
                 changeStriker();
                 checkInnings(ballCount);
     
@@ -407,8 +458,9 @@ namespace player_profile
                 displayWicket.Text = Convert.ToString(lvwicket);
                 updateBallAndRun(1,1);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
+                calculateStrikeRate(score, over, ballCount, this.striker);
                 changeStriker();
+                addBowlerRuns(1);
                 checkInnings(ballCount);
            
             }
@@ -431,7 +483,8 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    addBowlerRuns(1);
                 if (wide.IsChecked == true)
                 {
                     updateBallAndRun(0, 0);
@@ -452,8 +505,8 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-                updateBallAndRun(0,1);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    updateBallAndRun(0,1);
                 checkInnings(ballCount);
               
             }
@@ -466,8 +519,9 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-                updateBallAndRun(2,1);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    updateBallAndRun(2,1);
+                addBowlerRuns(2);
                 checkInnings(ballCount);
         
             }
@@ -490,7 +544,8 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    addBowlerRuns(1);
                 if (wide.IsChecked == true)
                 {
                     updateBallAndRun(0, 0);
@@ -512,8 +567,8 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-                updateBallAndRun(0,1);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    updateBallAndRun(0,1);
                 changeStriker();
                 checkInnings(ballCount);
          
@@ -527,8 +582,9 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-                updateBallAndRun(3,1);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    updateBallAndRun(3,1);
+                addBowlerRuns(3);
                 changeStriker();
                 checkInnings(ballCount);
              
@@ -551,8 +607,9 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-                if (wide.IsChecked == true) 
+                addBowlerRuns(1);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    if (wide.IsChecked == true) 
                 {
                     updateBallAndRun(0, 0);
                 }
@@ -573,8 +630,8 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-                updateBallAndRun(0,1);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    updateBallAndRun(0,1);
                 checkInnings(ballCount);
              
             }
@@ -587,8 +644,9 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-                updateBallAndRun(4,1);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    updateBallAndRun(4,1);
+                addBowlerRuns(4);
                 addBoundary(4);
                 checkInnings(ballCount);
                 
@@ -612,8 +670,9 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-                if (wide.IsChecked == true)
+                addBowlerRuns(1);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    if (wide.IsChecked == true)
                 {
                     updateBallAndRun(0, 0);
                 }
@@ -635,8 +694,8 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-                updateBallAndRun(0,1);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    updateBallAndRun(0,1);
                 changeStriker();
                 checkInnings(ballCount);
               
@@ -650,8 +709,9 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-                updateBallAndRun(5,1);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    updateBallAndRun(5,1);
+                addBowlerRuns(5);
                 addBoundary(4);
                 changeStriker();
                 checkInnings(ballCount);
@@ -676,8 +736,9 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-                if (wide.IsChecked == true)
+                addBowlerRuns(1);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    if (wide.IsChecked == true)
                 {
                     updateBallAndRun(0, 0);
                 }
@@ -698,8 +759,8 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-                updateBallAndRun(0, 1);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    updateBallAndRun(0, 1);
                 checkInnings(ballCount);
              
             }
@@ -712,8 +773,9 @@ namespace player_profile
                 displayOverno.Text = Convert.ToString(over);
                 displayWicket.Text = Convert.ToString(lvwicket);
                 calculateRunRate(score, over, ballCount);
-                calculateStrikeRate(score, over, ballCount,this.striker);
-                updateBallAndRun(6,1);
+                    calculateStrikeRate(score, over, ballCount, this.striker);
+                    updateBallAndRun(6,1);
+                addBowlerRuns(6);
                 addBoundary(6);
                 checkInnings(ballCount);
              
@@ -756,3 +818,4 @@ namespace player_profile
       
     }
 }
+
